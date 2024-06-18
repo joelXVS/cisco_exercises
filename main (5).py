@@ -1,12 +1,14 @@
-date = input("Ingresa tu fecha de cumpleaños (en el siguiente formato: AAAAMMDD o AAAADDMM, 8 dígitos): ")
-if len(date) != 8 or not date.isdigit():
-    print("Formato de fecha inválida.")
-else:
-    while len(date) > 1:
-        the_sum = 0
-        for dig in date:
-            the_sum += int(dig)
-        print(date)
-        date = str(the_sum)
-    print("Tu Dígito de la Vida es: " + date)
-	
+x = 0
+x = float(x)
+y = 3 * x**3 - 2 * x**2 + 3 * x - 1
+print("y =", y)
+
+x = 1
+x = float(x)
+y = 3 * x**3 - 2 * x**2 + 3 * x - 1
+print("y =", y)
+
+x = -1
+x = float(x)
+y = 3 * x**3 - 2 * x**2 + 3 * x - 1
+print("y =", y)

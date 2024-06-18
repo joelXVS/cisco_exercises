@@ -1,21 +1,19 @@
-from os import strerror
+# 1 milla = 1609.344 metros.
+# 1 galón = 3.785411784 litros.
 
-counters = {chr(ch): 0 for ch in range(ord('a'), ord('z') + 1)}
-file_name = input("Ingresa el nombre del archivo a analizar: ")
-try:
-    file = open(file_name, "rt")
-    for line in file:
-        for char in line:
-            if char.isalpha():
-                counters[char.lower()] += 1
-    file.close()
-    file = open(file_name + '.hist', 'wt')
-    # Nota: hemos utilizado una lambda para acceder a los elementos del directorio y se ha establecido reverse a True para obtener un orden válido.
-    for char in sorted(counters.keys(), key=lambda x: counters[x], reverse=True):
-        c = counters[char]
-        if c > 0:
-            file.write(char + ' -> ' + str(c) + '\n')
-    file.close()
-except IOError as e:
-    print("Se produjo un error de E/S: ", strerror(e.errno))
-    
+def liters_100km_to_miles_gallon(liters):
+    gallons = liters / 3.785411784
+    miles = 100 * 1000 / 1609.344
+    return miles / gallons
+
+def miles_gallon_to_liters_100km(miles):
+    km100 = miles * 1609.344 / 1000 / 100
+    liters = 3.785411784
+    return liters / km100
+
+print(liters_100km_to_miles_gallon(3.9))
+print(liters_100km_to_miles_gallon(7.5))
+print(liters_100km_to_miles_gallon(10.))
+print(miles_gallon_to_liters_100km(60.3))
+print(miles_gallon_to_liters_100km(31.4))
+print(miles_gallon_to_liters_100km(23.5))

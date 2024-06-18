@@ -1,11 +1,13 @@
-text = input("Ingresa un texto: ")
+john = 3
+mary = 5
+adam = 6
 
-# Quitar todos los espacios...
-text = text.replace(' ','')
+print(john, mary, adam, sep=',')
 
-# ... y revisar si la palabra es igual en ambos sentidos
-if len(text) > 1 and text.upper() == text[::-1].upper():
-	print("Es un palíndromo")
-else:
-	print("No es un palíndromo")
-	
+total_apples = john + mary + adam
+print(total_apples)
+
+# peter = 12.5
+# suzy = 2
+# print(peter / suzy)
+# print("Total number of apples:", total_apples)

@@ -1,26 +1,31 @@
-import math
+def is_year_leap(year):
+    if year % 4 != 0:
+        return False
+    elif year % 100 != 0:
+        return True
+    elif year % 400 != 0:
+        return False
+    else:
+        return True
 
+def days_in_month(year,month):
+    if year < 1582 or month < 1 or month > 12:
+        return None
+    days = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+    res  = days[month - 1]
+    if month == 2 and is_year_leap(year):
+        res = 29
+    return res
 
-class Point:
-    def __init__(self, x=0.0, y=0.0):
-        self.__x = x
-        self.__y = y
-
-    def getx(self):
-        return self.__x
-
-    def gety(self):
-        return self.__y
-
-    def distance_from_xy(self, x, y):
-        return math.hypot(abs(self.__x - x), abs(self.__y - y))
-
-    def distance_from_point(self, point):
-        return self.distance_from_xy(point.getx(), point.gety())
-
-
-point1 = Point(0, 0)
-point2 = Point(1, 1)
-print(point1.distance_from_point(point2))
-print(point2.distance_from_xy(2, 0))
-    
+test_years = [1900, 2000, 2016, 1987]
+test_months = [ 2, 2, 1, 11]
+test_results = [28, 29, 31, 30]
+for i in range(len(test_years)):
+    yr = test_years[i]
+    mo = test_months[i]
+    print(yr,mo,"-> ",end="")
+    result = days_in_month(yr, mo)
+    if result == test_results[i]:
+        print("OK")
+    else:
+        print("Fallido")
