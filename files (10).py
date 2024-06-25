@@ -1,34 +1,32 @@
-class WeekDayError(Exception):
+class ErrorDeDíaDeSemana(Exception):
     pass
 
+class Semanario:
+    __dias = ['Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab', 'Dom']
 
-class Weeker:
-    __names = ['Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab', 'Dom']
-
-    def __init__(self, day):
+    def __init__(self, dia):
         try:
-            self.__current = Weeker.__names.index(day)
+            self.__current = Semanario.__dias.index(dia)
         except ValueError:
-            raise WeekDayError
+            raise ErrorDeDíaDeSemana
 
     def __str__(self):
-        return Weeker.__names[self.__current]
+        return Semanario.__dias[self.__current]
 
-    def add_days(self, n):
-        self.__current = (self.__current + n) % 7
+    def agregar_dia(self, num):
+        self.__current = (self.__current + num) % 7
 
-    def subtract_days(self, n):
-        self.__current = (self.__current - n) % 7
-
+    def quitar_dias(self, num):
+        self.__current = (self.__current - num) % 7
 
 try:
-    weekday = Weeker('Lun')
-    print(weekday)
-    weekday.add_days(15)
-    print(weekday)
-    weekday.subtract_days(23)
-    print(weekday)
-    weekday = Weeker('Lunes')
-except WeekDayError:
+    diaDeSemana = Weeker('Lun')
+    print(diaDeSemana)
+    diaDeSemana.add_days(15)
+    print(diaDeSemana)
+    diaDeSemana.subtract_days(23)
+    print(diaDeSemana)
+    diaDeSemana = Weeker('Lunes')
+except ErrorDeDíaDeSemana:
     print("Lo siento, no puedo atender tu solicitud.")
     
