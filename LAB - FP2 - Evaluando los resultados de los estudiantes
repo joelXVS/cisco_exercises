@@ -2,7 +2,6 @@
 class StudentsDataException(Exception):
     pass
 
-
 # Una excepción para líneas erróneas:
 class WrongLine(StudentsDataException):
     def __init__(self, line_number, line_string):
@@ -10,12 +9,10 @@ class WrongLine(StudentsDataException):
         self.line_number = line_number
         self.line_string = line_string
 
-
 # Una excepción para un archivo vacío.
 class FileEmpty(StudentsDataException):
     def __init__(self):
         super().__init__(self)
-
 
 from os import strerror
 
